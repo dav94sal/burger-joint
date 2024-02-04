@@ -6,7 +6,12 @@ class Order {
 
   addToList(item) {
     this.count++;
-    this.list[count] = item;
+    this.list[item.name] = item;
+  };
+
+  removeFromList(item) {
+    this.count--;
+    delete this.list[item.name];
   }
 }
 
