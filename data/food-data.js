@@ -33,8 +33,8 @@ const foodData = {
     }
   },
 
-  "Drinks": {
-    "name": "Drinks",
+  "Drink": {
+    "name": "Drink",
     "type": "drink",
     "size": {
       "small": 1,
@@ -43,13 +43,23 @@ const foodData = {
     }
   },
 
-  "newFood": (name, size = null) => {
-    if (!this[name]) return `${name} does not exist`;
-    const data = this[name];
-    let price = data[price];
-    if (size) price
+  "calcSizePrice": (obj, size) => {
+    return obj.size[size]
+  },
 
-    const newFood = new FoodItem(dataa.name, data.type, );
+  "newFood": (name, size = null) => {
+    if (!foodData[name]) return `${name} does not exist`;
+    let data = foodData[name]
+    let price;
+
+    if (!data.price) {
+      if (!size) return `${name} requires a size`;
+      if (!data.size[size]) return `Invalid Size`;
+      price = foodData.calcSizePrice(data, size);
+    } else price = data.price;
+
+    return new FoodItem(data.name, data.type, price, size);
+
   }
 }
 
