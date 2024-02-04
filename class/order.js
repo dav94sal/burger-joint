@@ -12,6 +12,15 @@ class Order {
   removeFromList(item) {
     this.count--;
     delete this.list[item.name];
+  };
+
+  getTotal() {
+    let total = 0;
+    for (let key in this.list) {
+      let value = this.list[key];
+      total += value.price
+    };
+    return total;
   }
 }
 
