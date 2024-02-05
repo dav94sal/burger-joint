@@ -1,4 +1,5 @@
 const foodData = require("./data/food-data");
+const foodData2 = require("./data/food2")
 const Store = require("./class/store")
 const Order = require("./class/order");
 
@@ -44,13 +45,13 @@ console.log(newOrder.getTotal())
 
 */
 
-/* foodData: debugging
+// /* foodData: debugging
 
-console.log(foodData.Hamburger)
-console.log(foodData.Fries)
+// console.log(foodData.Hamburger)
+// console.log(foodData.Fries)
 
-console.log(foodData.newFood("Hamburger"));
-console.log(foodData.newFood("Fries", "large"));
-console.log(foodData.newFood("Drink", "med"));
+// console.log(foodData.newFood("Hamburger"));
+// console.log(foodData.newFood("Fries", "large"));
+// console.log(foodData.newFood("Drink", "med"));
 
-*/
+// */

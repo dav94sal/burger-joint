@@ -1,21 +1,21 @@
-const FoodItem = require("../class/food-item");
+const { Entree, Appetizer, Drink } = require("../class/food-item");
 
 const foodData = {
   "Hamburger": {
     "name": "Hamburger",
-    "type": "food",
+    "type": "entree",
     "price": 5
   },
 
   "Sandwich": {
     "name": "Sandwich",
-    "type": "food",
+    "type": "entree",
     "price": 4
   },
 
   "Fries": {
     "name": "Fries",
-    "type": "food",
+    "type": "appetizer",
     "size": {
       "small": 1,
       "med": 2,
@@ -25,7 +25,7 @@ const foodData = {
 
   "CheeseSticks": {
     "name": "CheeseSticks",
-    "type": "food",
+    "type": "appetizer",
     "size": {
       "small": 1,
       "med": 2,
@@ -47,6 +47,12 @@ const foodData = {
     return obj.size[size]
   },
 
+  "instantiate": (name, type, price, size) => {
+    if (type === "entree") return new Entree (name, type, price)
+    if (type === "appetizer") return new Appetizer(name, type, price, size)
+    if (type === "drink") return new Drink(name, type, price, size)
+  },
+
   "newFood": (name, size = null) => {
     if (!foodData[name]) return `${name} does not exist`;
     let data = foodData[name]
@@ -55,10 +61,12 @@ const foodData = {
     if (!data.price) {
       if (!size) return `${name} requires a size`;
       if (!data.size[size]) return `Invalid Size`;
+
       price = foodData.calcSizePrice(data, size);
+
     } else price = data.price;
 
-    return new FoodItem(data.name, data.type, price, size);
+    return foodData.instantiate(data.name, data.type, price, size);
 
   }
 }

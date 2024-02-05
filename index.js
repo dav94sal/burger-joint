@@ -5,7 +5,8 @@ const Order = require("./class/order");
 const BurgerJoint = new Store("Dave's Burger Joint");
 
 (function () {
-  console.log("Dave's Burger Joint")
+  console.log("Dave's Burger Joint");
+  console.log(" ")
   for (let key in foodData) {
     if (typeof foodData[key] !== "function") BurgerJoint.addToMenu(key)
   }
