@@ -1,5 +1,4 @@
 const Menu = require("./menu");
-const foodData = require("../data/food-data")
 
 class Restaurant {
   constructor(name, menu = {}) {

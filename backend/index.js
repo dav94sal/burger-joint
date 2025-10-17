@@ -1,8 +1,10 @@
 const foodData = require("./data/food-data");
 const Restaurant = require("./class/restaurant");
 const { createCustomers } = require("./sims/customerCreator");
+const { generateFoodItems } = require("./sims/foodGenerator")
 
-const BurgerJoint = new Restaurant("Dave's Burger Joint", foodData);
+const items = generateFoodItems(foodData);
+const BurgerJoint = new Restaurant("Dave's Burger Joint", items);
 
 (function () {
   console.log(`Welcome to ${BurgerJoint.name}!\n`);

@@ -1,6 +1,6 @@
 class Menu{
-    constructor(data) {
-        this.items = this.populate(data);
+    constructor(items) {
+        this.items = items;
     };
 
     addItem(item) {
@@ -15,27 +15,19 @@ class Menu{
         return this.items[name];
     };
 
-    populate(items) {
-        let menu = {};
-        for (let key in items) {
-            if (typeof items[key] !== "function") menu[key] = items[key];
-        };
-        return menu;
-    };
-
     display() {
         console.log("Menu:");
         for (let key in this.items) {
-            let item = this.items[key];
-            let price = item.price || []
+            let Item = this.items[key];
+            let price = Item.price || []
 
-            if (item.size) {
-                Object.entries(item.size).forEach(kvp => {
+            if (Item.sizePrices) {
+                Object.entries(Item.sizePrices).forEach(kvp => {
                     price.push(`${kvp[0]}: $${kvp[1]}`);
                 });
             };
 
-            console.log(`- ${item.name}: ${typeof price === "object" ? price.join(", ") : `$${price}`}`);
+            console.log(`- ${Item.name}: ${typeof price === "object" ? price.join(", ") : `$${price}`}`);
         };
     };
 };
